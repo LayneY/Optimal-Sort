@@ -10,10 +10,126 @@ while line != nil && line != "" && line != " " {
     line = readLine()
 }
 
-// print the final result
-let sortedArray = sort(words: words)
-for word in sortedArray {
+
+// level 1
+var af1 = [String]()
+var gm1 = [String]()
+var ns1 = [String]()
+var tz1 = [String]()
+let lvl1 = alp(0,af1,gm1,ns1,tz1,words)
+
+// level 2 a-f
+var aa = [String]()
+var ag = [String]()
+var an = [String]()
+var at = [String]()
+let lvl20 = alp(1,aa,ag,an,at,lvl1[0])
+
+// level 2 g-m
+var ga = [String]()
+var gg = [String]()
+var gn = [String]()
+var gt = [String]()
+let lvl21 = alp(1, ga,gg,gn,gt,lvl1[1])
+
+// level 2 n-s
+var na = [String]()
+var ng = [String]()
+var nn = [String]()
+var nt = [String]()
+let lvl22 = alp(1, na,ng,nn,nt,lvl1[2])
+
+// level 2 t-z
+var ta = [String]()
+var tg = [String]()
+var tn = [String]()
+var tt = [String]()
+let lvl23 = alp(1, ta,tg,tn,tt,lvl1[3])
+
+var finalArray = [String]()
+for i in lvl20 {
+    for i2 in i {
+        finalArray.append(i2)
+    }
+}
+for i in lvl21 {
+    for i2 in i {
+        finalArray.append(i2)
+    }
+}
+for i in lvl22 {
+    for i2 in i {
+        finalArray.append(i2)
+    }
+}
+for i in lvl23 {
+    for i2 in i {
+        finalArray.append(i2)
+    }
+}
+print("DIVIDE RESULT")
+for word in finalArray {
     print(word)
+}
+
+print("FINAL RESULT")
+// print the final result
+finalArray = sort(words: words)
+for word in finalArray {
+    print(word)
+}
+
+//print("level 1:")
+// print(lvl1)
+// print("level 2-0:")
+// print(lvl20)
+// print("level 2-1:")
+// print(lvl21)
+//print("level 2-2:")
+//print(lvl22)
+//print("level 2-3:")
+//print(lvl23)
+
+//sort through each level: tried making it so all variables above arent needed
+// var sortIndex = 0
+// var finalArray = [String]()
+// for sorted in lvl1 {
+//     for _ in 0 ..< getLongestWordCount(words){
+//         var newSort = sorted
+//         let empty = [String]()
+//         let x = alp(sortIndex, empty, empty, empty, empty, newSort)
+//         sortIndex += 1
+//         print(x)
+//         newSort = x
+//     }
+// }
+
+func alp(_ index: Int, _ af: [String], _ gm: [String], _ ns: [String], _ tz: [String], _ words: [String]) -> [[String]] {
+    let i = index
+    var afnew = af
+    var gmnew = gm
+    var nsnew = ns
+    var tznew = tz
+    
+    for word in words {
+        if word.count > i {
+            if "a" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "f" {
+                afnew.append(word)
+            }else if "g" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "m" {
+                gmnew.append(word)
+            }else if "n" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "s" {
+                nsnew.append(word)
+            }else if "t" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "z" {
+                tznew.append(word)
+            }
+        }
+    }
+    //print(afnew)
+    //print(gmnew)
+    //print(nsnew)
+    //print(tznew)
+
+    return [afnew, gmnew, nsnew, tznew]
 }
 
 // checks if 2 words should be swapped
@@ -47,4 +163,14 @@ func swap(words:inout [String], index1: Int, index2: Int) {
 
     words[index1] = word2
     words[index2] = word1
+}
+
+func getLongestWordCount(_ words: [String]) -> Int {
+    var initial = 0
+    for word in words {
+        if word.count > initial {
+            initial = word.count
+        }
+    }
+    return initial
 }
