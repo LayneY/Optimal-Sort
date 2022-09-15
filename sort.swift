@@ -46,31 +46,39 @@ var tn = [String]()
 var tt = [String]()
 let lvl23 = alp(1, ta,tg,tn,tt,lvl1[3])
 
+func appendArray(inputArray: [String], outputArray:inout [String]) {
+    let sorted = sort(words:inputArray)
+    var x = 0
+    for i in sorted {
+        if sorted.indices.contains(x){ 
+            outputArray.append(i)}
+        x += 1
+    }
+}
 var finalArray = [String]()
 for i in lvl20 {
-    for i2 in i {
-        finalArray.append(i2)
+    appendArray(inputArray: i, outputArray:&finalArray)
     }
-}
+
 for i in lvl21 {
-    for i2 in i {
-        finalArray.append(i2)
+    appendArray(inputArray: i, outputArray:&finalArray) 
+    
     }
-}
+
 for i in lvl22 {
-    for i2 in i {
-        finalArray.append(i2)
-    }
+   
+    appendArray(inputArray: i, outputArray:&finalArray)   
+   
 }
 for i in lvl23 {
-    for i2 in i {
-        finalArray.append(i2)
-    }
+ 
+ 
+    appendArray(inputArray: i, outputArray:&finalArray) 
 }
-print("DIVIDE RESULT")
-for word in finalArray {
-    print(word)
-}
+//print("DIVIDE RESULT")
+//for word in finalArray {
+  //  print(word)
+//}
 
 print("FINAL RESULT")
 // print the final result
