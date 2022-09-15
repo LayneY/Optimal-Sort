@@ -2,11 +2,11 @@
 var words = [String]()
 
 // ask user for words to add to array
-print("Enter a word to add to the list of words to sort. Once finished adding all words, press ENTER. ", terminator:"")
+//print("Enter a word to add to the list of words to sort. Once finished adding all words, press ENTER. ", terminator:"")
 var line = readLine()
 while line != nil && line != "" && line != " " {
     words.append(line!)
-    print("Enter a word to add to the list of words to sort. Once finished adding all words, press ENTER. ", terminator:"")
+    //print("Enter a word to add to the list of words to sort. Once finished adding all words, press ENTER. ", terminator:"")
     line = readLine()
 }
 
@@ -50,31 +50,39 @@ func appendArray(inputArray: [String], outputArray:inout [String]) {
     let sorted = sort(words:inputArray)
     var x = 0
     for i in sorted {
-        if sorted.indices.contains(x){ 
-            outputArray.append(i)}
+        outputArray.append(i)
         x += 1
     }
 }
 var finalArray = [String]()
-for i in lvl20 {
-    appendArray(inputArray: i, outputArray:&finalArray)
-    }
 
-for i in lvl21 {
-    appendArray(inputArray: i, outputArray:&finalArray) 
+for i in lvl1 {
+    if i.count != 0 {
+    let sorted = sort(words:i)
+    for i2 in sorted {
+        finalArray.append(i2)
+    }
+    }
+}
+//for i in lvl20 {
+   // appendArray(inputArray: i, outputArray:&finalArray)
+  //  }
+
+//for i in lvl21 {
+  //  appendArray(inputArray: i, outputArray:&finalArray) 
     
-    }
+  //  }
 
-for i in lvl22 {
+//for i in lvl22 {
    
-    appendArray(inputArray: i, outputArray:&finalArray)   
+  //  appendArray(inputArray: i, outputArray:&finalArray)   
    
-}
-for i in lvl23 {
+//}
+//for i in lvl23 {
  
  
-    appendArray(inputArray: i, outputArray:&finalArray) 
-}
+    //appendArray(inputArray: i, outputArray:&finalArray) 
+//}
 //print("DIVIDE RESULT")
 //for word in finalArray {
   //  print(word)
@@ -82,7 +90,6 @@ for i in lvl23 {
 
 print("FINAL RESULT")
 // print the final result
-finalArray = sort(words: words)
 for word in finalArray {
     print(word)
 }
@@ -119,7 +126,8 @@ func alp(_ index: Int, _ af: [String], _ gm: [String], _ ns: [String], _ tz: [St
     var nsnew = ns
     var tznew = tz
     
-    for word in words {
+    for wordItem in words {
+        let word = wordItem.lowercased().filter("abcdefghijklmnopqrstuvwxyz".contains)
         if word.count > i {
             if "a" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "f" {
                 afnew.append(word)
