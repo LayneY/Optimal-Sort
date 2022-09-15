@@ -47,47 +47,44 @@ var tt = [String]()
 let lvl23 = alp(1, ta,tg,tn,tt,lvl1[3])
 
 var finalArray = [String]()
-
-//for i in lvl20 {
-  //  let sorted20 = sort(words:i)
-//    for i2 in sorted20 {
-  //      finalArray.append(i2)
-    //}
-//}
-//for i in lvl21 {
- //   sort(words: i)
-//}
-//for i in lvl22 {
-//    sort(words: i)
-//}
-//for i in lvl23 {
-//    sort(words: i)
-//}
-
-for i in lvl1 {
+for i in lvl20 {
     for i2 in i {
         finalArray.append(i2)
     }
 }
-
-//print("INSERT RESULT")
-for word in finalArray {
-    print(word)
+for i in lvl21 {
+    for i2 in i {
+        finalArray.append(i2)
+    }
 }
-
-//print("FINAL RESULT")
-//print the final result
-//finalArray = sort(words: words)
+for i in lvl22 {
+    for i2 in i {
+        finalArray.append(i2)
+    }
+}
+for i in lvl23 {
+    for i2 in i {
+        finalArray.append(i2)
+    }
+}
+//print("DIVIDE RESULT")
 //for word in finalArray {
 //    print(word)
 //}
 
+//print("FINAL RESULT")
+// print the final result
+finalArray = sort(words: words)
+for word in finalArray {
+    print(word)
+}
+
 //print("level 1:")
-//print(lvl1)
-//print("level 2-0:")
-//print(lvl20)
-//print("level 2-1:")
-//print(lvl21)
+// print(lvl1)
+// print("level 2-0:")
+// print(lvl20)
+// print("level 2-1:")
+// print(lvl21)
 //print("level 2-2:")
 //print(lvl22)
 //print("level 2-3:")
@@ -114,81 +111,16 @@ func alp(_ index: Int, _ af: [String], _ gm: [String], _ ns: [String], _ tz: [St
     var nsnew = ns
     var tznew = tz
     
-    for wordItem in words {
-        let word = wordItem.lowercased().filter("abcdefghijklmnopqrstuvwxyz".contains)
+    for word in words {
         if word.count > i {
             if "a" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "f" {
-                var insertIndex = afnew.count - 1
-                if afnew.count == 0{
-                    afnew.append(word)
-                }else{
-                    var isInserted = false
-                    while !isInserted {
-                        if insertIndex < 0 {
-                            afnew.insert(word, at:0)
-                            isInserted = true
-                        }else if word > afnew[insertIndex] {
-                            afnew.insert(word, at:insertIndex + 1)
-                            isInserted = true
-                        }else{
-                            insertIndex -= 1
-                        }
-                    }
-                }
+                afnew.append(word)
             }else if "g" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "m" {
-                var insertIndex = gmnew.count - 1
-                if gmnew.count == 0{
-                    gmnew.append(word)
-                }else{
-                    var isInserted = false
-                    while !isInserted {
-                        if insertIndex < 0 {
-                            gmnew.insert(word, at:0)
-                            isInserted = true
-                        }else if word > gmnew[insertIndex] {
-                            gmnew.insert(word, at:insertIndex + 1)
-                            isInserted = true
-                        }else{
-                            insertIndex -= 1
-                        }
-                    }
-                }
+                gmnew.append(word)
             }else if "n" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "s" {
-                var insertIndex = nsnew.count - 1
-                if nsnew.count == 0{
-                    nsnew.append(word)
-                }else{
-                    var isInserted = false
-                    while !isInserted {
-                        if insertIndex < 0 {
-                            nsnew.insert(word, at:0)
-                            isInserted = true
-                        }else if word > nsnew[insertIndex] {
-                            nsnew.insert(word, at:insertIndex + 1)
-                            isInserted = true
-                        }else{
-                            insertIndex -= 1
-                        }
-                    }
-                }
+                nsnew.append(word)
             }else if "t" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "z" {
-                var insertIndex = tznew.count - 1
-                if tznew.count == 0{
-                    tznew.append(word)
-                }else{
-                    var isInserted = false
-                    while !isInserted {
-                        if insertIndex < 0 {
-                            tznew.insert(word, at:0)
-                            isInserted = true
-                        }else if word > tznew[insertIndex] {
-                            tznew.insert(word, at:insertIndex + 1)
-                            isInserted = true
-                        }else{
-                            insertIndex -= 1
-                        }
-                    }
-                }
+                tznew.append(word)
             }
         }
     }
