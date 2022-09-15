@@ -2,11 +2,11 @@
 var words = [String]()
 
 // ask user for words to add to array
-print("Enter a word to add to the list of words to sort. Once finished adding all words, press ENTER. ", terminator:"")
+//print("Enter a word to add to the list of words to sort. Once finished adding all words, press ENTER. ", terminator:"")
 var line = readLine()
 while line != nil && line != "" && line != " " {
     words.append(line!)
-    print("Enter a word to add to the list of words to sort. Once finished adding all words, press ENTER. ", terminator:"")
+    //print("Enter a word to add to the list of words to sort. Once finished adding all words, press ENTER. ", terminator:"")
     line = readLine()
 }
 
@@ -47,44 +47,47 @@ var tt = [String]()
 let lvl23 = alp(1, ta,tg,tn,tt,lvl1[3])
 
 var finalArray = [String]()
-for i in lvl20 {
+
+//for i in lvl20 {
+  //  let sorted20 = sort(words:i)
+//    for i2 in sorted20 {
+  //      finalArray.append(i2)
+    //}
+//}
+//for i in lvl21 {
+ //   sort(words: i)
+//}
+//for i in lvl22 {
+//    sort(words: i)
+//}
+//for i in lvl23 {
+//    sort(words: i)
+//}
+
+for i in lvl1 {
     for i2 in i {
         finalArray.append(i2)
     }
 }
-for i in lvl21 {
-    for i2 in i {
-        finalArray.append(i2)
-    }
-}
-for i in lvl22 {
-    for i2 in i {
-        finalArray.append(i2)
-    }
-}
-for i in lvl23 {
-    for i2 in i {
-        finalArray.append(i2)
-    }
-}
-print("DIVIDE RESULT")
+
+//print("INSERT RESULT")
 for word in finalArray {
     print(word)
 }
 
-print("FINAL RESULT")
-// print the final result
-finalArray = sort(words: words)
-for word in finalArray {
-    print(word)
-}
+//print("FINAL RESULT")
+//print the final result
+//finalArray = sort(words: words)
+//for word in finalArray {
+//    print(word)
+//}
 
 //print("level 1:")
-// print(lvl1)
-// print("level 2-0:")
-// print(lvl20)
-// print("level 2-1:")
-// print(lvl21)
+//print(lvl1)
+//print("level 2-0:")
+//print(lvl20)
+//print("level 2-1:")
+//print(lvl21)
 //print("level 2-2:")
 //print(lvl22)
 //print("level 2-3:")
@@ -111,16 +114,81 @@ func alp(_ index: Int, _ af: [String], _ gm: [String], _ ns: [String], _ tz: [St
     var nsnew = ns
     var tznew = tz
     
-    for word in words {
+    for wordItem in words {
+        let word = wordItem.lowercased().filter("abcdefghijklmnopqrstuvwxyz".contains)
         if word.count > i {
             if "a" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "f" {
-                afnew.append(word)
+                var insertIndex = afnew.count - 1
+                if afnew.count == 0{
+                    afnew.append(word)
+                }else{
+                    var isInserted = false
+                    while !isInserted {
+                        if insertIndex < 0 {
+                            afnew.insert(word, at:0)
+                            isInserted = true
+                        }else if word > afnew[insertIndex] {
+                            afnew.insert(word, at:insertIndex + 1)
+                            isInserted = true
+                        }else{
+                            insertIndex -= 1
+                        }
+                    }
+                }
             }else if "g" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "m" {
-                gmnew.append(word)
+                var insertIndex = gmnew.count - 1
+                if gmnew.count == 0{
+                    gmnew.append(word)
+                }else{
+                    var isInserted = false
+                    while !isInserted {
+                        if insertIndex < 0 {
+                            gmnew.insert(word, at:0)
+                            isInserted = true
+                        }else if word > gmnew[insertIndex] {
+                            gmnew.insert(word, at:insertIndex + 1)
+                            isInserted = true
+                        }else{
+                            insertIndex -= 1
+                        }
+                    }
+                }
             }else if "n" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "s" {
-                nsnew.append(word)
+                var insertIndex = nsnew.count - 1
+                if nsnew.count == 0{
+                    nsnew.append(word)
+                }else{
+                    var isInserted = false
+                    while !isInserted {
+                        if insertIndex < 0 {
+                            nsnew.insert(word, at:0)
+                            isInserted = true
+                        }else if word > nsnew[insertIndex] {
+                            nsnew.insert(word, at:insertIndex + 1)
+                            isInserted = true
+                        }else{
+                            insertIndex -= 1
+                        }
+                    }
+                }
             }else if "t" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "z" {
-                tznew.append(word)
+                var insertIndex = tznew.count - 1
+                if tznew.count == 0{
+                    tznew.append(word)
+                }else{
+                    var isInserted = false
+                    while !isInserted {
+                        if insertIndex < 0 {
+                            tznew.insert(word, at:0)
+                            isInserted = true
+                        }else if word > tznew[insertIndex] {
+                            tznew.insert(word, at:insertIndex + 1)
+                            isInserted = true
+                        }else{
+                            insertIndex -= 1
+                        }
+                    }
+                }
             }
         }
     }
