@@ -13,7 +13,7 @@ while line != nil && line != "" && line != " " {
 
 // level 1
 let empty = [String]()
-let lvl1 = alp(0,empty,empty,empty,empty,empty,words)
+let lvl1 = alp(0,empty,empty,empty,empty,empty,empty,words)
 
 var finalArray = [String]()
 
@@ -55,19 +55,20 @@ for word in finalArray {
 //     }
 // }
 
-func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ grp4: [String], _ grp5: [String], _ words: [String]) -> [[String]] {
+func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ grp4: [String], _ grp5: [String], _ grp6: [String], _ words: [String]) -> [[String]] {
     let i = index
-    var grp1new = grp1 //a-d
-    var grp2new = grp2 //e-h
-    var grp3new = grp3 //i-o
-    var grp4new = grp4 //p-t
-    var grp5new = grp5 //u-z
+    var grp1new = grp1 //a-c
+    var grp2new = grp2 //d-g
+    var grp3new = grp3 //h-l
+    var grp4new = grp4 //m-q
+    var grp5new = grp5 //r-u
+    var grp6new = grp6 //v-z
 
     
     for wordItem in words {
         let word = wordItem.lowercased().filter("abcdefghijklmnopqrstuvwxyz".contains)
         if word.count > i {
-            if "a" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "d" {
+            if "a" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "c" {
                 var insertIndex = grp1new.count - 1
                 if grp1new.count == 0{
                     grp1new.append(word)
@@ -85,7 +86,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
-            }else if "e" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "h" {
+            }else if "d" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "g" {
                 var insertIndex = grp2new.count - 1
                 if grp2new.count == 0{
                     grp2new.append(word)
@@ -103,7 +104,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
-            }else if "i" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "o" {
+            }else if "h" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "l" {
                 var insertIndex = grp3new.count - 1
                 if grp3new.count == 0{
                     grp3new.append(word)
@@ -121,7 +122,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
-            }else if "p" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "t" {
+            }else if "m" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "q" {
                 var insertIndex = grp4new.count - 1
                 if grp4new.count == 0{
                     grp4new.append(word)
@@ -139,7 +140,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
-            }else if "u" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "z" {
+            }else if "r" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "u" {
                 var insertIndex = grp5new.count - 1
                 if grp5new.count == 0{
                     grp5new.append(word)
@@ -151,6 +152,24 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                             isInserted = true
                         }else if word > grp5new[insertIndex] {
                             grp5new.insert(word, at:insertIndex + 1)
+                            isInserted = true
+                        }else{
+                            insertIndex -= 1
+                        }
+                    }
+                }
+            }else if "v" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "z" {
+                var insertIndex = grp6new.count - 1
+                if grp6new.count == 0{
+                    grp6new.append(word)
+                }else{
+                    var isInserted = false
+                    while !isInserted {
+                        if insertIndex < 0 {
+                            grp6new.insert(word, at:0)
+                            isInserted = true
+                        }else if word > grp6new[insertIndex] {
+                            grp6new.insert(word, at:insertIndex + 1)
                             isInserted = true
                         }else{
                             insertIndex -= 1
