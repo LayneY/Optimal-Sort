@@ -13,7 +13,7 @@ while line != nil && line != "" && line != " " {
 
 // level 1
 let empty = [String]()
-let lvl1 = alp(0,empty,empty,empty,empty,empty,empty,words)
+let lvl1 = alp(0,empty,empty,empty,empty,empty,empty,empty,words)
 
 var finalArray = [String]()
 
@@ -55,14 +55,15 @@ for word in finalArray {
 //     }
 // }
 
-func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ grp4: [String], _ grp5: [String], _ grp6: [String], _ words: [String]) -> [[String]] {
+func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ grp4: [String], _ grp5: [String], _ grp6: [String], _ grp7: [String], _ words: [String]) -> [[String]] {
     let i = index
     var grp1new = grp1 //a-c
     var grp2new = grp2 //d-g
-    var grp3new = grp3 //h-l
-    var grp4new = grp4 //m-q
-    var grp5new = grp5 //r-u
-    var grp6new = grp6 //v-z
+    var grp3new = grp3 //h-k
+    var grp4new = grp4 //l-o
+    var grp5new = grp5 //p-s
+    var grp6new = grp6 //t-v
+    var grp7new = grp7 //w-z
 
     
     for wordItem in words {
@@ -104,7 +105,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
-            }else if "h" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "l" {
+            }else if "h" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "k" {
                 var insertIndex = grp3new.count - 1
                 if grp3new.count == 0{
                     grp3new.append(word)
@@ -122,7 +123,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
-            }else if "m" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "q" {
+            }else if "l" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "o" {
                 var insertIndex = grp4new.count - 1
                 if grp4new.count == 0{
                     grp4new.append(word)
@@ -140,7 +141,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
-            }else if "r" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "u" {
+            }else if "p" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "s" {
                 var insertIndex = grp5new.count - 1
                 if grp5new.count == 0{
                     grp5new.append(word)
@@ -158,7 +159,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
-            }else if "v" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "z" {
+            }else if "t" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "v" {
                 var insertIndex = grp6new.count - 1
                 if grp6new.count == 0{
                     grp6new.append(word)
@@ -176,6 +177,24 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
                         }
                     }
                 }
+            }else if "w" <= word[word.index(word.startIndex, offsetBy:i)] && word[word.index(word.startIndex, offsetBy:i)] <= "z" {
+                var insertIndex = grp7new.count - 1
+                if grp7new.count == 0{
+                    grp7new.append(word)
+                }else{
+                    var isInserted = false
+                    while !isInserted {
+                        if insertIndex < 0 {
+                            grp7new.insert(word, at:0)
+                            isInserted = true
+                        }else if word > grp7new[insertIndex] {
+                            grp7new.insert(word, at:insertIndex + 1)
+                            isInserted = true
+                        }else{
+                            insertIndex -= 1
+                        }
+                    }
+                }
             }
         }
     }
@@ -184,7 +203,7 @@ func alp(_ index: Int, _ grp1: [String], _ grp2: [String], _ grp3: [String], _ g
     //print(nsnew)
     //print(tznew)
 
-    return [grp1new, grp2new, grp3new, grp4new, grp5new]
+    return [grp1new, grp2new, grp3new, grp4new, grp5new, grp6new, grp7new]
 }
 
 // checks if 2 words should be swapped
